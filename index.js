@@ -19,3 +19,12 @@ a.constructor===Foo;
 a.constructor===b.constructor;
 a.__proto__===Foo.prototype;
 a.__proto__===b.__proto__;
+
+b.__proto__== b.constructor.prototype;
+
+function Bar(who){
+    Foo.call(this,who);
+}
+//Bar.prototype = new Foo()
+Bar.prototype = Object.create(Foo.prototype); //better way
+var b = new Bar("b");
